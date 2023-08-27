@@ -72,5 +72,7 @@ public class player_controller : MonoBehaviour
     void Jump()
     {
         Debug.Log("Jumping");
+        controls.Player.jump.performed += ctx => m_Animator.SetBool("IsJumping", true);
+        controls.Player.jump.canceled += ctx => m_Animator.SetBool("IsJumping",false);
     }
 }
