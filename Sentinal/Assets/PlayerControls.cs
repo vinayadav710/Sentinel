@@ -44,6 +44,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""884e153e-c675-4c3d-869f-09131f10959b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""slide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ffda4ac-4198-46de-80eb-62e1ec5906f2"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""controller"",
+                    ""action"": ""shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -90,6 +110,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_jump = m_Player.FindAction("jump", throwIfNotFound: true);
         m_Player_slide = m_Player.FindAction("slide", throwIfNotFound: true);
+        m_Player_shoot = m_Player.FindAction("shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -151,12 +172,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_jump;
     private readonly InputAction m_Player_slide;
+    private readonly InputAction m_Player_shoot;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @jump => m_Wrapper.m_Player_jump;
         public InputAction @slide => m_Wrapper.m_Player_slide;
+        public InputAction @shoot => m_Wrapper.m_Player_shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -172,6 +195,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @slide.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlide;
                 @slide.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlide;
                 @slide.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlide;
+                @shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -182,6 +208,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @slide.started += instance.OnSlide;
                 @slide.performed += instance.OnSlide;
                 @slide.canceled += instance.OnSlide;
+                @shoot.started += instance.OnShoot;
+                @shoot.performed += instance.OnShoot;
+                @shoot.canceled += instance.OnShoot;
             }
         }
     }
@@ -199,5 +228,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnSlide(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
