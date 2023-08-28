@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2768e9af962e12e46bc1630619a2b43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 200
+  turnSpeed: 500
   RunningSpeed: 15
 --- !u!95 &1462788483
 Animator:
@@ -431,6 +431,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d840191bf419bd64bb8127d4d8da3813, type: 3}
   m_PrefabInstance: {fileID: 1462788480}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1462788488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462788481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff477f7f782876243a59a14a73366f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 1899025640}
+  bulletPrefab: {fileID: 6894535394070730474, guid: 4928ebddfcf585f42b28539381aeaecf, type: 3}
 --- !u!1 &1486194821
 GameObject:
   m_ObjectHideFlags: 0

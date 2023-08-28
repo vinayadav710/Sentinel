@@ -38,5 +38,6 @@ public class wepon : MonoBehaviour
     void Shoot()
     {
         Debug.Log("shot");
+        Instantiate(bulletPrefab, firePoint.position,firePoint.rotation);
     }
 }
