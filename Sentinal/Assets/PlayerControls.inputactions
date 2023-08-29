@@ -1,5 +1,5 @@
 {
-    "name": "inputMaster",
+    "name": "PlayerControls",
     "maps": [
         {
             "name": "Player",
@@ -18,6 +18,15 @@
                     "name": "slide",
                     "type": "Button",
                     "id": "e8ac7bfb-1922-416d-9fcb-1b94bb310d8b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "shoot",
+                    "type": "Button",
+                    "id": "884e153e-c675-4c3d-869f-09131f10959b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -44,6 +53,17 @@
                     "processors": "",
                     "groups": "controller",
                     "action": "slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ffda4ac-4198-46de-80eb-62e1ec5906f2",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "controller",
+                    "action": "shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
